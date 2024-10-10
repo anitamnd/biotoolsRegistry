@@ -14,7 +14,6 @@ RUN mkdir components/ css/ dist/ images/ img/ js/ json/ lib/ partials/ resources
 COPY components components/
 COPY css css/
 COPY dist dist/
-COPY images images/
 COPY img img/
 COPY js js/
 COPY json json/

@@ -7,4 +7,13 @@
 		<span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true" ng-show="!ToolSorter.order" ></span>
 		<span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true" ng-show="ToolSorter.order"></span>
 	</button>
+
+ <!-- Dropdown to select items per page -->
+ <label for="pageSize">Items per page:</label>
+ <select id="itemsPerPage" ng-model="pageSize">
+	 <option value="20">20</option>
+	 <option value="50">50</option>
+	 <option value="100">100</option>
+ </select>
+
 </span>

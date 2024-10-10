@@ -136,6 +136,9 @@ angular.module('elixir_front.services', [])
 		// enable spinner
 		this.loading = true;
 
+		// Add page_size to the query
+		$stateParams['page_size'] = $stateParams['page_size'] || 20;
+
 		// get tools
 		var response = ToolListConnection.query($stateParams, function() {
 			// disable spinner

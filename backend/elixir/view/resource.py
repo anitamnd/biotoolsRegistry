@@ -46,7 +46,12 @@ class ResourceList(APIView):
 	
 	def get(self, request, format=None):
 		query_dict = request.GET
-		size = api_settings.PAGE_SIZE
+
+		# Get default size from settings
+		default_size = api_settings.PAGE_SIZE
+
+		# Get page size from and page query params 
+		size = int(query_dict.get('page_size', default_size))
 		page = int(query_dict.get('page', '1'))
 
 		searchLogger = elixir_logging.SearchLogger(query_dict)
@@ -121,10 +126,12 @@ class ResourceList(APIView):
 		# 		 	'list': []}, status=200)
 
 
-		return Response({'count': count,
-						 'next': None if (page*size >= count) else "?page=" + str(page + 1),
-						 'previous': None if page == 1 else "?page=" + str(page - 1),
-						 'list': results}, status=200)
+		return Response({
+            'count': count,
+            'next': None if (page * size >= count) else f"?page={page + 1}&page_size={size}",
+            'previous': None if page == 1 else f"?page={page - 1}&page_size={size}",
+            'list': results
+        }, status=200)
 
 	def post(self, request, format=None):
 		serializer = ResourceSerializer(data=request.data, context={'request':request,"request_type":"POST"})
