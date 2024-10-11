@@ -252,9 +252,8 @@ angular.module('elixir_front.services', [])
 })
 .service('ToolPaginator', function(){
 	this.currentPage = 1;
-	// pagination settings
 	this.maxSize = 5;
-	this.pageSize = 10;
+	this.pageSize = 20;
 })
 .service('ToolSorter', function(){
 	var _this = this;

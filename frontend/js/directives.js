@@ -146,7 +146,7 @@ angular.module('elixir_front.directives', [])
 .directive('toolPaginator', ['ToolList', '$state','$stateParams', 'Query', '$timeout', 'ToolPaginator', function(ToolList, $state, $stateParams, Query, $timeout, ToolPaginator) {
 	return {
 		restrict: 'A',
-		template: '<uib-pagination style="margin-bottom:25px; margin-top:25px;" total-items="ToolList.count" ng-model="ToolPaginator.currentPage" items-per-page="ToolPaginator.pageSize" max-size="ToolPaginator.maxSize" ng-change="pageChanged()" class="pagination-sm pagination-top" ng-disabled="ToolList.loading"></uib-pagination><select ng-model="ToolPaginator.pageSize" ng-change="pageSizeChanged()"> <option value="20">20</option><option value="50">50</option><option value="100">100</option></select>',
+		template: '<uib-pagination style="margin-bottom:25px; margin-top:25px;" total-items="ToolList.count" items-per-page="ToolPaginator.pageSize" ng-model="ToolPaginator.currentPage" max-size="ToolPaginator.maxSize" ng-change="pageChanged()" class="pagination-sm pagination-top" ng-disabled="ToolList.loading"></uib-pagination><select ng-model="ToolPaginator.pageSize" ng-change="pageSizeChanged()"><option value="20">20</option><option value="50">50</option><option value="100">100</option></select>',
 		link: function(scope, element, attrs) {
 			// reference the Query in the scope
 			scope.Query = Query;
@@ -166,6 +166,7 @@ angular.module('elixir_front.directives', [])
 				$timeout( function() {
 					// set the 'page' URL parameter according to currentPage
 					params['page'] = ToolPaginator.currentPage != 1 ? ToolPaginator.currentPage : null;
+					params['page_size'] = ToolPaginator.pageSize != 20 ? ToolPaginator.pageSize : null;
 					$state.transitionTo('search', params, { notify: false });
 					ToolList.refresh();
 				});

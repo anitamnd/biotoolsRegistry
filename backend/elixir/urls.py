@@ -37,9 +37,6 @@ urlpatterns = [
 	url(r'^(biotools\:)?(?P<biotoolsID>[a-zA-Z0-9.~_-]+)/validate/?$', views.ResourceUpdateValidator.as_view()),
 	# url(r'^(biotools\:)?(?P<biotoolsID>[a-zA-Z0-9.~_-]+)/i(ssues)?/(?P<issueId>[a-zA-Z0-9.~_-]+)?$', views.IssueView.as_view()),
 	url(r'^(biotools\:)?(?P<biotoolsID>[a-zA-Z0-9.~_-]+)/disown/?$', views.DisownResourceView.as_view()),
-    
-	url(r'^tools/?$', views.tools_list),
-    url(r'^api/tools/', views.tools_list, name='tools_list'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

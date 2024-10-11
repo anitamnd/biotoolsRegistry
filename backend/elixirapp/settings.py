@@ -248,9 +248,12 @@ REST_FRAMEWORK = {
         'rest_framework_yaml.renderers.YAMLRenderer',
         #'elixir.renderers.XMLSchemaRenderer',
     ),
+
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
     'PAGE_SIZE_QUERY_PARAM': 'page_size',
+    'MAX_PAGE_SIZE': 100,
+
     'NON_FIELD_ERRORS_KEY': 'general_errors'
 }
 

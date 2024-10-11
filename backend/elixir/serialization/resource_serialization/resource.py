@@ -218,10 +218,6 @@ class ResourceSerializer(serializers.ModelSerializer):
 	# instead of the id we use biotoolsID to identify the resources from the user point of view
 	lookup_field = 'biotoolsID'
 
-	# # need an alias so input has 'id' which is saved in the 'biotoolsID' field
-	# id = serializers.CharField(read_only=True, source="biotoolsID");
-	# id = serializers.CharField(allow_blank=False, max_length=50, min_length=1, source="biotoolsID", validators=[UniqueValidator(queryset=Resource.objects.filter(visibility=1), message="A resource with this ID already exists.")]);
-
 	# get the owner username from the auth_user table
 	owner = serializers.SlugRelatedField(read_only=True, slug_field='username')
 	# alias for 'was_id_validated'
