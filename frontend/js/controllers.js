@@ -1070,6 +1070,10 @@ angular.module('elixir_front.controllers', [])
         }
     });
 
+	$scope.updateLinkOrder = function () {
+        console.log('Links reordered:', $scope.software.link);
+        // No need to save to the server, just update the model in the client.
+    };
 }])
 .controller('ToolUpdateController', ['$scope', '$controller','$timeout','$state', '$stateParams', 'Tool', 'ToolUpdateValidator', 'Covid', 'CommunityCollection', function($scope, $controller, $timeout, $state, $stateParams, Tool, ToolUpdateValidator, Covid, CommunityCollection) {
 	// inherit common controller

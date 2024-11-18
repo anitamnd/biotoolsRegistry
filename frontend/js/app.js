@@ -25,7 +25,8 @@ var elixir_front = angular.module('elixir_front', [
 	'ui.grid.saveState',
 	'ui.grid.moveColumns',
 	'chart.js',
-	'ngMeta'
+	'ngMeta',
+	'dndLists'
 ], function($rootScopeProvider) {})
 
 // setting up router and states
