@@ -1071,6 +1071,12 @@ angular.module('elixir_front.controllers', [])
     });
 
 	$scope.updateLinkOrder = function () {
+		$http.post('/api/update-link-order/', { links: $scope.software.link })
+            .then(function (response) {
+                console.log('Link order updated successfully');
+            }, function (error) {
+                console.error('Error updating link order', error);
+            });
         console.log('Links reordered:', $scope.software.link);
         // No need to save to the server, just update the model in the client.
     };
