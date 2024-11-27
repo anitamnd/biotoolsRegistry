@@ -2,7 +2,7 @@ FROM node:11.15.0
 #FROM node:14.15.4
 #FROM node:4.7.2
 
-LABEL maintainer="Hans-Ioan Ienasescu <hans@bio.tools>"
+LABEL maintainer="SDU <support-bio-tools@sdu.dk>"
 
 RUN useradd --user-group --create-home biotools
 
@@ -10,11 +10,10 @@ ENV HOME=/home/biotools
 
 WORKDIR $HOME/frontend
 
-RUN mkdir components/ css/ dist/ images/ img/ js/ json/ lib/ partials/ resources/ static/
+RUN mkdir components/ css/ dist/ img/ js/ json/ lib/ partials/ resources/ static/
 COPY components components/
 COPY css css/
 COPY dist dist/
-COPY images images/
 COPY img img/
 COPY js js/
 COPY json json/
