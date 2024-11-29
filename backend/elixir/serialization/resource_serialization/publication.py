@@ -69,7 +69,7 @@ class PublicationSerializer(serializers.ModelSerializer):
 		#p = re.compile('^[\p{Zs}A-Za-z0-9+\.,\-_:;()]*$', re.IGNORECASE | re.UNICODE)
 
 		#this is ok, only allow spaces
-		p = re.compile('^[ A-Za-z0-9+\.,\-_:;()]*$', re.IGNORECASE | re.UNICODE)
+		p = re.compile(r'^[ A-Za-z0-9+\.,\-_:;()]*$', re.IGNORECASE | re.UNICODE)
 		
 		if not p.search(attrs):
 			raise serializers.ValidationError('This field can only contain letters, numbers, spaces or these characters: + . , - _ : ; ( )')

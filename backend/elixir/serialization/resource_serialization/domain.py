@@ -2,7 +2,7 @@ from rest_framework import serializers
 from elixir.models import Domain, DomainResource, DomainTag, DomainCollection, Resource
 from elixir.validators import *
 from rest_framework.validators import UniqueValidator
-from orderedset import OrderedSet
+from ordered_set import OrderedSet
 from django.http import Http404
 
 

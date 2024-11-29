@@ -89,11 +89,11 @@ INSTALLED_APPS = (
     'elixir',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
+    'dj_rest_auth',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'rest_auth.registration',
+    'dj_rest_auth.registration',
     'django_extensions',
     # 'djcelery',
     # 'kombu.transport.django',
@@ -120,6 +120,7 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'allauth.account.middleware.AccountMiddleware', 
 )
 
 ROOT_URLCONF = 'elixirapp.urls'
@@ -281,7 +282,7 @@ ACCOUNT_USERNAME_REQUIRED = getenv(
     castf=bool,
 )
 ACCOUNT_AUTHENTICATION_METHOD = getenv(
-    'ACCOUNT_AUTHENTICATION_METHOD'
+    'ACCOUNT_AUTHENTICATION_METHOD',
     'username_email'
 )
 ACCOUNT_CONFIRM_EMAIL_ON_GET = getenv(
