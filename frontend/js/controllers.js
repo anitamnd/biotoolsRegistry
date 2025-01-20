@@ -247,6 +247,15 @@ angular.module('elixir_front.controllers', [])
 		});
 	}
 
+
+	// reset success flags when changes are made
+	$scope.$watch('software', function(newVal, oldVal) {
+		if (newVal !== oldVal) {
+			$scope.savingProgress.success = false;
+			$scope.validationProgress.success = false;
+		}
+	}, true);
+	
 	// modals
 	$scope.openModal = function (edam, type, suggestions) {
 		var ontoMap = {
