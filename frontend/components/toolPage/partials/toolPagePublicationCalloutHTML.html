@@ -15,9 +15,11 @@
 		<a href=" http://europepmc.org/search?query=CITES%3A{{  pmid  }}_MED" class="fa fa-external-link" style="padding-top: 3px; text-color={{color}}" aria-hidden="true" target="_blank"></a>
 	</span>
 </span>
-<span ng-show="( doi || pmid  ) &&   pmcid  " style="color: #CCCCCC;"> | </span></span>
-<span ng-show="pmcid">PMCID: <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/{{pmcid}}" target="_blank">{{ pmcid }}</a>
+
+<span ng-show="(doi || pmid) && pmcid" style="color: #CCCCCC;"> | </span>
+<span ng-show="pmcid">
+	PMCID: 
+	<a href="https://europepmc.org/article/PMC/{{ pmcid.substring(3) }}" target="_blank">{{ pmcid }}</a>
+</span>
+	
 </div>
-
-
-# PMC11718355

@@ -14,7 +14,7 @@ def getenv(key, default=None, castf=str):
 
 # Need to give value for these variables from one of the sources:
 #   - Environment variables
-#   - Secret settings: override variables below in __secret_settings.py file
+#   - Secret settings: override variables below in __secret_settings__.py file
 #   - Replace values in this file: Not recommended because this is git tracked and may be unsafe
 
 # Github organization name is the first part of the github.com/{github_organization_name/{github_repo_name}
