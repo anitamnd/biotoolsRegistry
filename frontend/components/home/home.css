@@ -3,7 +3,7 @@
     right: 30px;
     margin-top: 12px;
     width: 0px;
-	color:#ffa500;
+	color:#CC7800;
 }
 
 .home-search-bar .tags
@@ -12,7 +12,7 @@
 	padding-top: 7px !important;
 	padding-left: 8px !important;
 	border-radius: 25px !important;
-	border: 1px solid lightgrey !important;
+	border: 1px solid #CC7800 !important;
 }
 
 .home-search-bar input{
