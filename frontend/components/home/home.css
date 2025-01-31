@@ -3,6 +3,7 @@
     right: 30px;
     margin-top: 12px;
     width: 0px;
+	color:#ffa500;
 }
 
 .home-search-bar .tags
@@ -11,6 +12,7 @@
 	padding-top: 7px !important;
 	padding-left: 8px !important;
 	border-radius: 25px !important;
+	border: 1px solid lightgrey !important;
 }
 
 .home-search-bar input{
@@ -18,7 +20,7 @@
 }
 
 .home-search-bar .tag-item{
-	font-size: 15px !important;	
+	font-size: 15px !important;
 }
 
 .top-text-front{
@@ -28,9 +30,13 @@
   padding-bottom: 90px;
 }
 
-.jumbotron, .topic_browser_heading{
+.first-one, .topic_browser_heading{
 	/*background-color: #C2DFFF;*/
-	background-color: #D3EEFF;
+	background-color: rgb(220, 225, 230);
+}
+
+.new-color{
+	background-color: #FFF !important;
 }
 
 .bolder-text{
