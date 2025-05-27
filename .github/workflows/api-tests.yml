@@ -26,10 +26,10 @@ jobs:
       run: docker compose ps
 
     - name: install dependencies for patterns
-      run: docker compose exec biotools-backend pip install rstr
+      run: docker exec biotools-backend pip install rstr
 
     - name: run tests
-      run: docker compose exec biotools-backend python manage.py test
+      run: docker exec biotools-backend python manage.py test
 
     - name: tear down
       run: docker compose down
