@@ -19,6 +19,9 @@ jobs:
     - name: build and run
       run: docker compose up -d
 
+    - name: wait for services
+      run: sleep 15
+
     - name: list containers
       run: docker compose ps
 
