@@ -7,8 +7,13 @@ from django.conf import settings
 from rest_framework.urlpatterns import format_suffix_patterns
 from elixir import views, sitemap
 from elixir import edit_permissions
+from elixir.social_views import orcid_login_success, orcid_disconnect
 
 urlpatterns = [
+	# ORCID social authentication endpoints
+	re_path(r'^orcid/success/?$', orcid_login_success, name='orcid_login_success'),
+	re_path(r'^orcid/disconnect/?$', orcid_disconnect, name='orcid_disconnect'),
+	
 	re_path(r'^user-list/?$', views.UserList.as_view()),
 	re_path(r'^edit-permissions/?$', edit_permissions.EditPermissions.as_view()),
 	re_path(r'^edit-permissions/(?P<pk>[0-9]+)/?$', edit_permissions.EditPermissions.as_view()),

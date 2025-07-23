@@ -14,7 +14,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import datetime
 import json
-# import djcelery
 
 
 # Prefix for environment variables settings.
@@ -26,24 +25,6 @@ def getenv(key, default=None, castf=str, ns=ENV_NAMESPACE):
     value = os.environ.get('{ns}_{key}'.format(ns=ns, key=key), None)
     return castf(value) if value is not None else default
 
-
-# CELERY SETTINGS
-# REDIS_HOST = getenv('REDIS_HOST', 'localhost')
-# REDIS_PORT = getenv('REDIS_PORT', '6379')
-# REDIS_DB = getenv('REDIS_DB', '0')
-# BROKER_URL = 'redis://{host}:{port}/{db}'.format(
-#     host=REDIS_HOST,
-#     port=REDIS_PORT,
-#     db=REDIS_DB,
-# )
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-
-# CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-# CELERY_ALWAYS_EAGER = getenv('CELERY_ALWAYS_EAGER', True, castf=bool)
-
-# djcelery.setup_loader()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_URL = "/media/"
@@ -92,6 +73,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.orcid',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'django_extensions',
@@ -192,7 +174,7 @@ DB_COLLATION = {
 # EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = 'no-reply@local-bio.tools'
 
-# Zoho Mail works (create an account)
+# Zoho Mail works (create an account + app specific password)
 # EMAIL_HOST = 'smtp.zoho.com'
 # EMAIL_PORT = 465
 # EMAIL_USE_SSL = True
@@ -295,6 +277,25 @@ RESERVED_URL_KEYWORDS = ['t', 'tool', 'user-list', 'edit-permissions', 'validate
 # Ecosystem is off by default
 GITHUB_ECOSYSTEM_ON = getenv('GITHUB_ECOSYSTEM_ON', False, castf=bool)
 ADMIN_EMAIL_LIST = getenv('ADMIN_EMAIL_LIST', [], castf=json.loads)
+
+# ORCID Social Authentication Configuration
+SOCIALACCOUNT_PROVIDERS = {
+    'orcid': {
+        'BASE_DOMAIN': getenv('ORCID_BASE_DOMAIN', 'orcid.org'),  # Use 'sandbox.orcid.org' for testing
+        'MEMBER_API': getenv('ORCID_MEMBER_API', False, castf=bool),  # Set to True for member API
+        'SCOPE': ['read-limited'],  # Standard scope for reading ORCID data
+        'APP': {
+            'client_id': getenv('ORCID_CLIENT_ID', ''),
+            'secret': getenv('ORCID_CLIENT_SECRET', ''),
+        }
+    }
+}
+
+# Additional ORCID settings
+SOCIALACCOUNT_AUTO_SIGNUP = getenv('SOCIALACCOUNT_AUTO_SIGNUP', True, castf=bool)
+SOCIALACCOUNT_EMAIL_REQUIRED = getenv('SOCIALACCOUNT_EMAIL_REQUIRED', True, castf=bool)
+SOCIALACCOUNT_EMAIL_VERIFICATION = getenv('SOCIALACCOUNT_EMAIL_VERIFICATION', 'optional')
+SOCIALACCOUNT_ADAPTER = 'elixir.social_adapters.ORCIDSocialAccountAdapter'
 
 # settings specific to deployment
 try:
